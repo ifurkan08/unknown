@@ -12,7 +12,12 @@ import java.util.List;
 @RequestMapping("hello")
 public class HelloController {
     @GetMapping("furkan")
-    public ResponseEntity<String> getUsersByGroupName() {
+    public ResponseEntity<String> getGo() {
         return ResponseEntity.ok("furkan");
+    }
+
+    @GetMapping("furkan2")
+    public ResponseEntity<String> getGo2() {
+        return ResponseEntity.ok("furkan2");
     }
 }
