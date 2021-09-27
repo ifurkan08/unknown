@@ -1,4 +1,4 @@
-package com.xgroup.unknown.model.dto;
+package com.xgroup.unknown.model.requests;
 
 public class LoginRequest {
     private String userName;
