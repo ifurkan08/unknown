@@ -1,9 +1,9 @@
-package com.xgroup.unknown.model.requests;
+package com.xgroup.unknown.model.requests.auth;
 
 import com.xgroup.unknown.model.base.RequestBase;
-import com.xgroup.unknown.model.entities.User;
+import com.xgroup.unknown.model.entities.Auth.UserEntity;
 
-public class SignUpRequest extends RequestBase <SignUpRequest, User> {
+public class SignUpRequest extends RequestBase <SignUpRequest, UserEntity> {
     private String userName;
     private String password;
     private String mail;

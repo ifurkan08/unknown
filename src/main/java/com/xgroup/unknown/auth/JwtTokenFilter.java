@@ -25,9 +25,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        /**
-         * "Bearer 123hab2355"
-         */
+
         final String authHeader = httpServletRequest.getHeader("Authorization");
 
         String username = null;
