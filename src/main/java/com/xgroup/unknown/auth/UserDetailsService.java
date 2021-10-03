@@ -1,16 +1,18 @@
 package com.xgroup.unknown.auth;
 
+import com.xgroup.unknown.model.entities.Auth.UserEntity;
+import com.xgroup.unknown.services.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
@@ -20,10 +22,17 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private IUserService userService;
+
     @PostConstruct
     public void init() {
-        String encodedPw=passwordEncoder.encode("123");
-        users.put("furkan",encodedPw);
+
+        List<UserEntity> userList= userService.getAllActiveUsers();
+        for (UserEntity user: userList) {
+            String encodedPw=passwordEncoder.encode(user.getPassword());
+            users.put(user.getUserName(),encodedPw);
+        }
     }
 
 

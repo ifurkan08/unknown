@@ -1,11 +1,13 @@
-package com.xgroup.unknown.model.entities;
+package com.xgroup.unknown.model.entities.Auth;
+
+import com.xgroup.unknown.model.entities.IEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable , IEntity {
+public class UserEntity implements Serializable , IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,13 +21,23 @@ public class User implements Serializable , IEntity {
     @Column(nullable = false, name = "mail")
     private String mail;
 
-    public User() {
+    @Column(nullable = false, name = "active")
+    private String active;
+
+    @PrePersist
+    void prePersist() {
+        if (this.active==null){
+            this.active="E";
+        }
+    }
+    public UserEntity() {
     }
 
-    public User(Long id, String userName, String password) {
+    public UserEntity(Long id, String userName, String password, String active) {
         this.id = id;
         this.userName = userName;
         this.password = password;
+        this.active=active;
     }
 
     public Long getId() {
@@ -58,5 +70,13 @@ public class User implements Serializable , IEntity {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
 }

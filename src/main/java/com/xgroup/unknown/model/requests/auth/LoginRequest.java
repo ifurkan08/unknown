@@ -1,6 +1,9 @@
-package com.xgroup.unknown.model.requests;
+package com.xgroup.unknown.model.requests.auth;
 
-public class LoginRequest {
+import com.xgroup.unknown.model.base.RequestBase;
+import com.xgroup.unknown.model.entities.Auth.UserEntity;
+
+public class LoginRequest  extends RequestBase<LoginRequest, UserEntity> {
     private String userName;
     private String password;
 
