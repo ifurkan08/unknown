@@ -20,4 +20,8 @@ public class HelloController {
     public ResponseEntity<String> getGo2() {
         return ResponseEntity.ok("furkan2");
     }
+
+    public ResponseEntity<String> furkan123(){
+        return ResponseEntity.ok("furkan2");
+    }
 }
